@@ -9,7 +9,7 @@ load balancer for attaching virtual machines or scale sets.
 
 ```hcl
 module "load_balancer" {
-  source = "github.com/cybercapybara/terraform-azurerm-load-balancer"
+  source = "github.com/moveeeax/terraform-azurerm-load-balancer"
 
   name                = "web-lb"
   resource_group_name = "prod-rg"
