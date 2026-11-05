@@ -28,7 +28,7 @@ rule to override.
 
 ```hcl
 module "load_balancer" {
-  source = "github.com/moveeeax/terraform-azurerm-load-balancer"
+  source = "github.com/moveeeax/terraform-azurerm-load-balancer?ref=v1.0.0"
 
   name                = "web-lb"
   resource_group_name = "prod-rg"
@@ -105,7 +105,12 @@ A runnable example lives in [`examples/basic`](examples/basic).
 | Name      | Version  |
 |-----------|----------|
 | terraform | >= 1.5   |
-| azurerm   | >= 3.0   |
+| azurerm   | >= 3.0, < 6.0 |
+
+CI validates and tests the module against the 3.0.0 floor and the latest 5.x
+release. In azurerm 5.0, `subnet_id` and `public_ip_address_id` on `azurerm_lb`
+frontends are no longer Computed; the module always sets them explicitly, so
+this has no effect. 6.x is excluded until it has been tested.
 
 The test suite under [`tests/`](tests) additionally needs Terraform or
 OpenTofu >= 1.7 for `mock_provider`. That is a test-only requirement; the
